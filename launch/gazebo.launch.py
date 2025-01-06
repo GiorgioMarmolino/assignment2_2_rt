@@ -28,13 +28,23 @@ def generate_launch_description():
         executable='joint_state_publisher',
         name='joint_state_publisher'
     )
+    robot_controller_node = Node(
+        package='assignment2_2_rt',
+        executable='robot_controller',
+        name='SCRIVI'
+    )
+    
+    # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
+    spawn_entity = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=['-entity', 'my_test_robot', '-topic', '/robot_description', '-x', '2.0', '-y', '2.0'],
+        output='screen'
+    )
+	
    
 
-    # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-entity', 'my_test_robot', '-topic', '/robot_description', '-x', '2.0', '-y', '2.0'],
-                        output='screen')
-
+    
     return LaunchDescription([
         DeclareLaunchArgument(name='model', default_value=default_model_path,
                                     description='Absolute path to robot urdf file'),
