@@ -31,10 +31,9 @@ def generate_launch_description():
     robot_controller_node = Node(
         package='assignment2_2_rt',
         executable='robot_controller',
-        name='SCRIVI'
+        name='Robot_control'
     )
     
-    # GAZEBO_MODEL_PATH has to be correctly set for Gazebo to be able to find the model
     spawn_entity = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
