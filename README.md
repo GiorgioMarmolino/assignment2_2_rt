@@ -22,21 +22,22 @@ Before executing the project you are required to:
 
 ## Running the project
 After cloning this repository into your src/ folder of your ROS2 workspace:
-'''bash
+```bash
 git clone https://github.com/GiorgioMarmolino/assignment2_1_rt
-'''
+```
 go back in the main folder of your ROS2-WS and build this package:
-'''bash
+```bash
 colcon build
-'''
-'''bash
+```
+```bash
 source install/local_setup.bash
-'''
+```
 then launch the project using the launch file:
-'''bash
+```bash
 ros2 launch src/assignment2_2_rt/launch/gazebo.launch.py
-'''
+```
 
 Now the whole software has been launched, so we can see:
 1) The control node of the robot that implements the control logic;
 2) The simulation environment
+
