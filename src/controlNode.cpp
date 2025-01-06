@@ -23,14 +23,15 @@ private:
         auto orient = odom->pose.pose.orientation;
         geometry_msgs::msg::Twist speed;
 
-        RCLCPP_INFO(this->get_logger(), "Position: x=%.1f, y=%.1f, z=%.1f", pos.x, pos.y, pos.z);
-        RCLCPP_INFO(this->get_logger(), "Orientation: x=%.1f, y=%.1f, z=%.1f, w=%.1f", orient.x, orient.y, orient.z, orient.w);
+        RCLCPP_INFO(this->get_logger(), "ODOM:\n POS x=%.1f, y=%.1f, z=%.1f \n ORNT: x=%.1f, y=%.1f, z=%.1f, w=%.1f \n", pos.x, pos.y, pos.z, orient.x, orient.y, orient.z, orient.w);
+        
 
         if (pos.x > 9.0){speed.linear.x = 1.0; speed.angular.z = 1.0;}
         else if (pos.x < 1.0){speed.linear.x = 1.0; speed.angular.z = -1.0;}
         else{speed.linear.x = 1.0; speed.angular.z = 0.0;}
         motion_pub->publish(speed);
-        RCLCPP_INFO(this->get_logger(), "Publishing: linear.x=%.1f, angular.z=%.1f", speed.linear.x, speed.angular.z);
+
+        RCLCPP_INFO(this->get_logger(), "SET SPEED AS: \n X-LIN = %.1f \n Z-ANG = %.1f \n", speed.linear.x, speed.angular.z);
     }
 };
 

@@ -31,7 +31,8 @@ def generate_launch_description():
     robot_controller_node = Node(
         package='assignment2_2_rt',
         executable='robot_controller',
-        name='Robot_control'
+        name='Robot_control',
+	output='screen'
     )
     
     spawn_entity = Node(
@@ -49,6 +50,7 @@ def generate_launch_description():
                                     description='Absolute path to robot urdf file'),
         robot_state_publisher_node,
         joint_state_publisher_node,
+	robot_controller_node,
         spawn_entity,
         ExecuteProcess(
             cmd=['gazebo', '--verbose','worlds/empty.world', '-s', 'libgazebo_ros_factory.so'],

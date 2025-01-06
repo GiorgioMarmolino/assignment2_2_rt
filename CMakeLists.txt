@@ -22,14 +22,12 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 
-add_executable(robot_controller src/controlNode.cpp
+add_executable(robot_controller src/controlNode.cpp)
 
 ament_target_dependencies(robot_controller rclcpp std_msgs geometry_msgs nav_msgs)
 
-install(DIRECTORY
-  launch urdf config worlds
-  DESTINATION share/${PROJECT_NAME}/
-)
+install(DIRECTORY launch urdf config worlds DESTINATION share/${PROJECT_NAME}/)
+install(TARGETS robot_controller  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
